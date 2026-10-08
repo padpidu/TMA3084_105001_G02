@@ -2,7 +2,7 @@ import 'dart:io';
 
 void main() {
   // Show pizza prices
-  print('Pizza Price: Small: 5 MYR, Medium: 7 MYR, Large: 10 MYR');
+  print('Pizza Price: Small: 5 USD, Medium: 7 USD, Large: 10 USD');
 
   // Ask for pizza size
   print('Please enter your pizza size (small, medium, or large):');
@@ -36,5 +36,5 @@ void main() {
   // Calculate total payment
   double total = price * quantity;
 
-  print('Total payment: $total MYR');
+  print('Total payment: $total USD');
 }
