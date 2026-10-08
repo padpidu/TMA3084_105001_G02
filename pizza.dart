@@ -1,40 +1,59 @@
 import 'dart:io';
 
 void main() {
-  // Show pizza prices
-  print('Pizza Price: Small: 5 USD, Medium: 7 USD, Large: 10 USD');
+  // Display pizza prices
+  print('Pizza Prices: Small = 5 USD, Medium = 7 USD, Large = 10 USD');
 
-  // Ask for pizza size
-  print('Please enter your pizza size (small, medium, or large):');
-  String pizzaSize = stdin.readLineSync()!.toLowerCase();
+  double totalPayment = 0;
+  bool ordering = true;
 
-  // Ask for quantity
-  print('How many pizzas do you want of $pizzaSize?');
-  int quantity = int.parse(stdin.readLineSync()!);
+  // Allow continuous ordering
+  while (ordering) {
+    // Ask for pizza size
+    print('\nEnter pizza size (small, medium, or large):');
+    String pizzaSize = stdin.readLineSync()!.toLowerCase();
 
-  double price;
+    double price;
 
-  // Determine price using switch case
-  switch (pizzaSize) {
-    case 'small':
-      price = 5;
-      break;
+    // Determine price using switch statement
+    switch (pizzaSize) {
+      case 'small':
+        price = 5;
+        break;
 
-    case 'medium':
-      price = 7;
-      break;
+      case 'medium':
+        price = 7;
+        break;
 
-    case 'large':
-      price = 10;
-      break;
+      case 'large':
+        price = 10;
+        break;
 
-    default:
-      print('Invalid pizza size.');
-      return;
+      default:
+        print('Invalid pizza size. Please try again.');
+        continue;
+    }
+
+    // Ask for quantity
+    print('Enter quantity:');
+    int quantity = int.parse(stdin.readLineSync()!);
+
+    // Calculate payment
+    double payment = price * quantity;
+    totalPayment += payment;
+
+    print('Current order: $payment USD');
+    print('Total payment: $totalPayment USD');
+
+    // Ask if user wants to continue
+    print('\nDo you want to order another pizza? (yes/no)');
+    String answer = stdin.readLineSync()!.toLowerCase();
+
+    if (answer != 'yes') {
+      ordering = false;
+    }
   }
 
-  // Calculate total payment
-  double total = price * quantity;
-
-  print('Total payment: $total USD');
+  print('\nFinal total payment: $totalPayment USD');
+  print('Thank you for your order!');
 }
